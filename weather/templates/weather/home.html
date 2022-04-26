@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block  content %}
+
+      <div class="container  mx-auto w-50 mt-5">
+        <div class="text-center">
+          <h1 class="my-4 text-center fs-2">Find Weather City</h1>
+          <form method="get">
+             <input type="text" class="form-control" name="city_search" placeholder=" Search Your City...">
+             <input type="submit" class="btn btn-secondary my-3" value="Search">
+          </form>
+        </div>
+
+        {% if result %}
+          <table class="table mx-auto mt-5 w-50">
+            <thead>
+              <tr>
+                <th colspan="2" class="text-center">Weather of {{result.city_name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Area</th>
+                <td>{{result.city_name}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Day Time</th>
+                <td>{{result.data}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Weather</th>
+                <td>{{result.temp}}</td>
+              </tr>
+            </tbody>
+          </table>
+        {% endif %}
+
+        {% if error %}
+        
+        <p class="mt-4 text-danger h4">Please input right City Name | or System Error, Try Again</p>
+        
+        {% endif %}
+
+{% endblock  %}
